@@ -1,0 +1,213 @@
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+/* =========================== */
+/* ============HEADER========== */
+/* =========================== */
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: 0 315px;
+  height: 120px;
+}
+img {
+  height: 40px;
+  width: 120px;
+  border-radius: 5px;
+}
+
+.login {
+  display: flex;
+  justify-content: space-around;
+}
+
+input {
+  width: 630px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.login {
+  gap: 5px;
+}
+.login button {
+  height: 35px;
+  width: 115px;
+  border-radius: 5px;
+  font-size: 12px;
+  background-color: white;
+  color: #2cb1ba;
+  border: #2cb1ba solid 3px;
+}
+
+button {
+  height: 35px;
+  width: 115px;
+  border-radius: 5px;
+  font-size: 12px;
+  background-color: #2cb1ba;
+  border: #2cb1ba solid 3px;
+  color: white;
+}
+
+.login .deconnexion {
+  background-color: red;
+  color: white;
+  border: none;
+  border: solid 4px red;
+}
+
+/* =========================== */
+/* ============HERO========== */
+/* =========================== */
+
+.home-hero img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  position: absolute;
+}
+
+.home-hero > div {
+  padding: 25px;
+  font-size: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 400px;
+  height: 300px;
+  border-radius: 5px;
+  position: relative;
+  background-color: white;
+  top: 150px;
+  left: 300px;
+}
+
+.home-hero button {
+  height: 55px;
+  width: 300px;
+  border-radius: 5px;
+  font-size: 18px;
+  background-color: #2cb1ba;
+  border: #2cb1ba solid 3px;
+  color: white;
+}
+
+/* =========================== */
+/* ============MAIN========== */
+/* =========================== */
+
+.offers {
+  font-size: 12px;
+  margin: 400px 250px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.offer .user {
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.offer img {
+  width: 230px;
+  object-fit: cover;
+
+  height: 360px;
+}
+
+.offer .avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+/* =========================== */
+/* =========== OFFER ========= */
+/* =========================== */
+
+.item {
+  background-color: #ebedee;
+  padding: 200px;
+  display: flex;
+  justify-content: space-around;
+}
+.item img {
+  height: 640px;
+  width: 400px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.item .avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.user {
+  background-color: white;
+
+  margin-top: 40px;
+  display: flex;
+}
+
+.description {
+  padding: 30px;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* =========================== */
+/* =========== SIGNIN ======== */
+/* =========================== */
+
+form {
+  margin: 0px auto;
+  width: 300px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+form h2 {
+  text-align: center;
+  font-size: 26px;
+}
+
+form .input {
+  width: 280px;
+  border: none;
+  border-bottom: 1px solid #fcced3;
+  height: 35px;
+  margin-bottom: 20px;
+}
+
+form div {
+  display: flex;
+  justify-content: center;
+}
+form label {
+  margin: 10px 20px;
+  text-align: center;
+}
+
+.box {
+  width: 15px;
+}
+
+form button {
+  width: 280px;
+}
