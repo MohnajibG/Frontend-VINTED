@@ -1,13 +1,25 @@
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { FcSearch } from "react-icons/fc";
 
-import logo from "/Users/mac/LeReacteur/React/Jour8/vinted-frontend/src/assets/img/logo_files/logo-a7c93c98.png";
-const Header = ({ setToken, search, setSearch }) => {
+import logo from "/Users/mac/LeReacteur/React/Jour8/vinted-frontend/src/assets/logo.svg";
+import { useState } from "react";
+
+const Header = ({ handleToken, search, setSearch }) => {
   const navigate = useNavigate();
+  // const [connected, setConnected] = useState("/");
 
   const token = Cookies.get("token");
-  console.log(token);
+
+  // const handleSubmit = () => {
+  //   if (token) {
+  //     navigate("/publish");
+  //   } else {
+  //     setConnected("/publish");
+  //     navigate("/login");
+  //   }
+  // };
+
+  // console.log(token);
   return (
     <header className="header">
       <Link to="/">
@@ -30,7 +42,7 @@ const Header = ({ setToken, search, setSearch }) => {
             onClick={() => {
               console.log("Déconnexion...");
               Cookies.remove("token");
-              setToken(null);
+              handleToken(null);
               navigate("/");
             }}
           >
@@ -48,15 +60,7 @@ const Header = ({ setToken, search, setSearch }) => {
         )}
       </div>
       <div>
-        {!token ? (
-          <Link to="/login">
-            <button>Vends tes articles</button>
-          </Link>
-        ) : (
-          <Link to="/Annonce">
-            <button>Vends tes articles</button>
-          </Link>
-        )}
+        <button onClick={handleToken}> Vends tes articles</button>
       </div>
     </header>
   );

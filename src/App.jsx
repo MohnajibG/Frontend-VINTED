@@ -13,14 +13,36 @@ import Publish from "./pages/Publish";
 function App() {
   const [token, setToken] = useState(null);
   const [search, setSearch] = useState("");
+
+  const handleToken = (token) => {
+    if (token) {
+      Cookies.set("token", token, { expires: 7 });
+      // console.log(response.data.token);
+
+      {
+        setToken;
+      }
+      token;
+      console.log(setToken);
+    } else {
+      Cookies.remove("token");
+    }
+    setToken(null);
+  };
+
   return (
     <Router>
-      <Header setToken={setToken} />
+      <Header
+        token={token}
+        handleToken={handleToken}
+        search={search}
+        setSearch={setSearch}
+      />
       <Routes>
         <Route path="/" element={<Home search={search} />} />
         <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/signup" element={<Signup setToken={setToken} />} />
-        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/signup" element={<Signup handleToken={handleToken} />} />
+        <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route path="/publish" element={<Publish />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
