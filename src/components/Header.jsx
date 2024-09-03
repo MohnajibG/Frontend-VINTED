@@ -1,7 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import logo from "../src/assets/logo.svg";
-
 const Header = ({ token, handleToken, search, setSearch }) => {
   const navigate = useNavigate();
   const handlePublishClick = () => {
@@ -15,7 +13,7 @@ const Header = ({ token, handleToken, search, setSearch }) => {
   return (
     <header className="header">
       <Link to="/">
-        <img src={logo} alt="" />{" "}
+        <img src="/src/assets/logo.svg" alt="" />{" "}
       </Link>
       <input
         type="text"
