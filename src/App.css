@@ -276,3 +276,6 @@ h3 {
   height: 200px;
   object-fit: cover;
 }
+.payment {
+  margin: 60px;
+}

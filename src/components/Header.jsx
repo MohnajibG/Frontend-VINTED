@@ -4,18 +4,14 @@ import logo from "/Users/mac/LeReacteur/React/Jour8/vinted-frontend/src/assets/l
 
 const Header = ({ token, handleToken, search, setSearch }) => {
   const navigate = useNavigate();
-  // const [connected, setConnected] = useState("/");
+  const handlePublishClick = () => {
+    if (token) {
+      navigate("/publish");
+    } else {
+      navigate("/login");
+    }
+  };
 
-  // const handleSubmit = () => {
-  //   if (token) {
-  //     navigate("/publish");
-  //   } else {
-  //     setConnected("/publish");
-  //     navigate("/login");
-  //   }
-  // };
-
-  // console.log(token);
   return (
     <header className="header">
       <Link to="/">
@@ -54,7 +50,13 @@ const Header = ({ token, handleToken, search, setSearch }) => {
       </div>
       <div>
         <Link to="/publish">
-          <button> Vends tes articles</button>
+          <button
+            onClick={() => {
+              handlePublishClick;
+            }}
+          >
+            Vends tes articles
+          </button>
         </Link>
       </div>
     </header>

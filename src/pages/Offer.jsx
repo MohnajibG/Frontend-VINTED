@@ -1,17 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const Offer = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/v2/offer/${id}`
+          `https://lereacteur-vinted-api.herokuapp.com/v2/offers/${id}`
         );
         setData(response.data);
         setIsLoading(false);
@@ -49,13 +50,21 @@ const Offer = () => {
             <div className="user">
               <img
                 className="avatar"
-                src={data.owner.account?.avatar?.secure_url}
+                src={data.owner.account.avatar.secure_url}
                 alt=""
               />
-              <h3>{data.owner.account?.username}</h3>
+              <h3>{data.owner.account.username}</h3>
             </div>
           )}
-          <button>Acheter</button>
+          <Link
+            to="/payment"
+            state={{
+              title: data.product_name,
+              price: data.product_price * 100,
+            }}
+          >
+            <button>Acheter</button>
+          </Link>
         </div>
       </div>
     </div>

@@ -31,7 +31,15 @@ const Home = ({ search }) => {
           <img src="./src/assets/img/hero.jpg" alt="Image Hero" />
           <div>
             <p>Prêts à faire du tri dans vos placards ?</p>
-            <button>Commencer à vendre</button>
+            <Link to="/publish">
+              <button
+                onClick={() => {
+                  handlePublishClick();
+                }}
+              >
+                Commencer à vendre{" "}
+              </button>
+            </Link>
           </div>
         </div>
       </div>

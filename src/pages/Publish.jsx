@@ -44,7 +44,7 @@ const Publish = ({ token }) => {
     }
   };
 
-  return !token ? (
+  return token ? (
     <main>
       <form className="publish" onSubmit={handleSubmit}>
         <div className="publish">

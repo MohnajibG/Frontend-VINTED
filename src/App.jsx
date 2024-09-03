@@ -10,21 +10,20 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Header from "./components/Header";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 function App() {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(Cookies.get("token" || null));
   const [search, setSearch] = useState("");
 
   const handleToken = (token) => {
     if (token) {
       Cookies.set("token", token, { expires: 7 });
-      console.log(response.data.token);
-
-      setToken;
+      setToken(token);
     } else {
       Cookies.remove("token");
+      setToken(null);
     }
-    setToken(null);
   };
 
   return (
@@ -44,6 +43,7 @@ function App() {
           element={<Login token={token} handleToken={handleToken} />}
         />
         <Route path="/publish" element={<Publish token={token} />} />
+        <Route path="/payment" element={<Payment />} />
 
         <Route path="*" element={<NoMatch />} />
       </Routes>

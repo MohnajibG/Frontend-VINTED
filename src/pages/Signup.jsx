@@ -33,8 +33,9 @@ const Signup = ({ handleToken }) => {
 
       navigate("/");
     } catch (error) {
+      console.log(error);
       console.error("Erreur lors de l'inscription :", error.message);
-      if (error.message.status === 409) {
+      if (error.response.status === 409) {
         setErrorMessage("Cet email est déjà utilsé");
       } else if (error.reponse.data.message === "Parametres Manquantes") {
         setErrorMessage("Veuillez remplir les champs Manquants");
