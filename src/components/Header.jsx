@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import logo from "/Users/mac/LeReacteur/React/Jour8/vinted-frontend/src/assets/logo.svg";
+import logo from "../src/assets/logo.svg";
 
 const Header = ({ token, handleToken, search, setSearch }) => {
   const navigate = useNavigate();
