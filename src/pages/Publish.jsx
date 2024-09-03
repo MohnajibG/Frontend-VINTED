@@ -15,7 +15,7 @@ const Publish = ({ token }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(token);
     try {
       const formData = new FormData();
       formData.append("title", title);
@@ -40,7 +40,7 @@ const Publish = ({ token }) => {
       );
       console.log(response.data);
     } catch (error) {
-      console.log(error);
+      console.log("test", error);
     }
   };
 

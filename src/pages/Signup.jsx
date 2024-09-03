@@ -1,15 +1,16 @@
-import axios from "axios";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Input from "../components/Input";
-import Cookies from "js-cookie";
+import axios from "axios";
 
-const Signup = () => {
+const Signup = ({ handleToken }) => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(false);
+
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -23,21 +24,22 @@ const Signup = () => {
           email: email,
           username: username,
           password: password,
-          newslettre: true,
+          newsletter: newsletter,
         }
       );
-      // console.log(response);
-      const token = response.data.token;
-
-      Cookies.set("token", token, { expires: 7 });
       // console.log(response.data);
-      setToken(token);
+
+      handleToken(response.data.token);
 
       navigate("/");
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error.message);
       if (error.message.status === 409) {
         setErrorMessage("Cet email est déjà utilsé");
+      } else if (error.reponse.data.message === "Parametres Manquantes") {
+        setErrorMessage("Veuillez remplir les champs Manquants");
+      } else {
+        setErrorMessage("Une erreur est survenue, veuillez réessayer");
       }
     }
   };
@@ -73,13 +75,14 @@ const Signup = () => {
         />
         <div>
           <input
-            setState={setNewsletter}
+            onChange={() => setNewsletter(!newsletter)}
             checked={newsletter}
             className="box"
             type="checkbox"
             name="newsletter"
             id="newsletter"
           />
+
           <label> S'inscrire à notre newsletter</label>
         </div>
         <p>
@@ -87,13 +90,10 @@ const Signup = () => {
           Conditions et Politique de Confidentialité de Vinted. Je confirme
           avoir au moins 18 ans.
         </p>
-        <p>cette Email est deja utiliser</p>
         <button type="submit">S'inscrire</button>
-
-        <p>
-          Tu as déjà un compte? <Link to="/login">Connecte-toi</Link>
-        </p>
       </form>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      <Link to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
     </div>
   );
 };

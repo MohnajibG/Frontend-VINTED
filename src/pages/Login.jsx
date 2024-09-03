@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import Cookies from "js-cookie";
 
-const Login = ({ token, setToken }) => {
+const Login = ({ handleToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,16 +26,8 @@ const Login = ({ token, setToken }) => {
           password: password,
         }
       );
-
-      Cookies.set("token", response.data.token, { expires: 7 });
-      // console.log(response.data.token);
-
-      setToken(response.data.token);
-      console.log(setToken);
-
+      handleToken(response.data.token);
       navigate("/");
-
-      // console.log("Navigation vers la page d'accueil effectuée");
     } catch (error) {
       console.log(error);
     }

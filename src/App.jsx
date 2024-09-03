@@ -1,4 +1,5 @@
 import "./App.css";
+import Cookies from "js-cookie";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
@@ -17,13 +18,9 @@ function App() {
   const handleToken = (token) => {
     if (token) {
       Cookies.set("token", token, { expires: 7 });
-      // console.log(response.data.token);
+      console.log(response.data.token);
 
-      {
-        setToken;
-      }
-      token;
-      console.log(setToken);
+      setToken;
     } else {
       Cookies.remove("token");
     }
@@ -42,8 +39,12 @@ function App() {
         <Route path="/" element={<Home search={search} />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
-        <Route path="/login" element={<Login handleToken={handleToken} />} />
-        <Route path="/publish" element={<Publish />} />
+        <Route
+          path="/login"
+          element={<Login token={token} handleToken={handleToken} />}
+        />
+        <Route path="/publish" element={<Publish token={token} />} />
+
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>

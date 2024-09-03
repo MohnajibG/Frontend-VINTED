@@ -211,6 +211,10 @@ form label {
 form button {
   width: 280px;
 }
+/* 
+form .p {
+  text-align: center;
+} */
 
 /* =========================== */
 /* =========== PUBLISH ======= */

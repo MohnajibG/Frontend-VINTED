@@ -1,14 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 
 import logo from "/Users/mac/LeReacteur/React/Jour8/vinted-frontend/src/assets/logo.svg";
-import { useState } from "react";
 
-const Header = ({ handleToken, search, setSearch }) => {
+const Header = ({ token, handleToken, search, setSearch }) => {
   const navigate = useNavigate();
   // const [connected, setConnected] = useState("/");
-
-  const token = Cookies.get("token");
 
   // const handleSubmit = () => {
   //   if (token) {
@@ -40,10 +36,7 @@ const Header = ({ handleToken, search, setSearch }) => {
           <button
             className="deconnexion"
             onClick={() => {
-              console.log("Déconnexion...");
-              Cookies.remove("token");
               handleToken(null);
-              navigate("/");
             }}
           >
             Déconnexion
@@ -60,7 +53,9 @@ const Header = ({ handleToken, search, setSearch }) => {
         )}
       </div>
       <div>
-        <button onClick={handleToken}> Vends tes articles</button>
+        <Link to="/publish">
+          <button> Vends tes articles</button>
+        </Link>
       </div>
     </header>
   );
