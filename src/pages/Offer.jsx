@@ -50,12 +50,13 @@ const Offer = () => {
             <div className="user">
               <img
                 className="avatar"
-                src={data.owner.account.avatar.secure_url}
+                src={data.owner.account.avatar?.secure_url}
                 alt=""
               />
               <h3>{data.owner.account.username}</h3>
             </div>
           )}
+
           <Link
             to="/payment"
             state={{

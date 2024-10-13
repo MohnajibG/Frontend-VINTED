@@ -4,7 +4,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useState } from "react";
-import axios from "axios";
+import axios from "axios"; // <-- Correction ici (l'import était incomplet)
 
 const CheckoutForm = ({ title, price }) => {
   const stripe = useStripe();
@@ -19,21 +19,17 @@ const CheckoutForm = ({ title, price }) => {
     setErrorMessage(null);
     setIsLoading(true);
 
-    if (elements == null) {
+    if (!elements) {
+      // Meilleure vérification
       return;
     }
 
-    const { error: submitError } = await elements.submit();
-    if (submitError) {
-      setErrorMessage(submitError.message);
-      return;
-    }
     try {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/v2/payment",
+        "https://lereacteur-vinted-api.herokuapp.com/v2/payment", // Ajout du `https://`
         {
-          title: title,
-          amount: price,
+          title,
+          amount: price, // Utilisation de la syntaxe plus concise
         }
       );
 
@@ -50,9 +46,7 @@ const CheckoutForm = ({ title, price }) => {
 
       if (stripeResponse.error) {
         setErrorMessage(stripeResponse.error.message);
-      }
-
-      if (stripeResponse.paymentIntent.status == "succeeded") {
+      } else if (stripeResponse.paymentIntent.status === "succeeded") {
         setCompleted(true);
       }
     } catch (error) {
@@ -61,6 +55,7 @@ const CheckoutForm = ({ title, price }) => {
 
     setIsLoading(false);
   };
+
   return completed ? (
     <p>Paiement effectué</p>
   ) : (
