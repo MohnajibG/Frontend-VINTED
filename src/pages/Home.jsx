@@ -1,4 +1,5 @@
 import axios from "axios";
+import hero from "../assets/img/hero.jpg";
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -28,7 +29,7 @@ const Home = ({ search }) => {
     <main>
       <div>
         <div className="home-hero">
-          <img src="./src/assets/img/hero.jpg" alt="Image Hero" />
+          <img src={hero} alt="Image Hero" />
           <div>
             <p>Prêts à faire du tri dans vos placards ?</p>
             <Link to="/publish">
